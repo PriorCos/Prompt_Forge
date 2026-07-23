@@ -23,10 +23,12 @@ prompt marks where appends go with $appends (else they are added at the end).
 
 import json
 import re
-from pathlib import Path
+from pathlib import Path  # noqa: F401 - used in type annotations
 from string import Template
 
-PROMPTS_DIR = Path(__file__).resolve().parent.parent / 'prompts'
+from pf.paths import base_dir
+
+PROMPTS_DIR = base_dir() / 'prompts'
 
 
 def _catalog_file() -> Path:

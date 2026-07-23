@@ -7,9 +7,10 @@ is empty simply shows no caption.
 """
 
 import json
-from pathlib import Path
 
-MODELS_PATH = Path(__file__).resolve().parent.parent / 'models.json'
+from pf.paths import base_dir
+
+MODELS_PATH = base_dir() / 'models.json'
 
 DEFAULT_MODELS = {
     'glm-4-6': {

@@ -7,9 +7,10 @@ keep it corruption-resistant; a bad line is skipped on read, never fatal.
 import json
 import uuid
 from datetime import datetime, timezone
-from pathlib import Path
 
-HISTORY_PATH = Path(__file__).resolve().parent.parent / 'history.jsonl'
+from pf.paths import base_dir
+
+HISTORY_PATH = base_dir() / 'history.jsonl'
 
 
 def append(entry: dict) -> None:

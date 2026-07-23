@@ -16,9 +16,11 @@ import sys
 import threading
 import traceback
 from datetime import datetime
-from pathlib import Path
+from pathlib import Path  # noqa: F401 - used in type annotations
 
-LOG_DIR = Path(__file__).resolve().parent.parent / 'logs'
+from pf.paths import base_dir
+
+LOG_DIR = base_dir() / 'logs'
 LOG_FILE = LOG_DIR / 'prompt_forge.log'
 
 LEVELS = {'off': 0, 'basic': 1, 'verbose': 2}

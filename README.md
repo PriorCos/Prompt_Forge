@@ -28,9 +28,10 @@ Helpers `anim_on()` / `motion_on()` / `fade()` enforce this everywhere; every
 duration passes through `dur()` (× `ANIM_SCALE`, one speed knob). Effects:
 settings slide + scrim fade, dropdown chevron spin, accordion expand/collapse
 (animated maxHeight — clamped to 0 before showing to avoid a flash),
-maximize/restore (**custom geometry animation** — the window is frameless so
-maximize is tracked in `_is_max`/`_normal_geom` rather than the OS state; sizes
-to the screen work area), minimize (fade-out then `showMinimized`), output
+maximize/restore (geometry animation to/from the work area; the **OS maximized
+state is the single source of truth** so Win+Up, edge-snap, double-click and the
+button all stay in sync via `changeEvent`), minimize (fade-out then
+`showMinimized`), output
 fade-in on completion, status cross-fade, dialog + launch fade-in, theme pulse,
 copy pulse. Deferred: per-button scale, badge colour tween, animated append
 reorder, streaming caret. Window size/position/maximized
@@ -57,6 +58,22 @@ Then, in the app's **Settings** panel, paste your token: NovelAI → account
 settings → **Get Persistent API Token**. Tokens expire roughly monthly; a 401
 in the status line means paste a fresh one. The token is stored in plain text
 in `config.json` next to the app — keep this folder private.
+
+## Building a standalone .exe
+
+Bundles Python + PySide6 + httpx + the app into one double-clickable
+executable (no Python install needed to run it):
+
+```
+.venv\Scripts\pip install pyinstaller
+.venv\Scripts\pyinstaller --noconfirm --onefile --windowed --name PromptForge --exclude-module nicegui --exclude-module tkinter app.py
+```
+
+Output: `dist\PromptForge.exe` (~large; PySide6 is bundled). It is **portable** -
+`config.json`, `logs/`, `history.jsonl` and the prompt catalog are written next
+to the .exe (see `pf/paths.py`, which uses the exe folder when frozen). Keep the
+.exe in a user-writable folder (Desktop, Downloads) rather than Program Files so
+it can write those files. `build/`, `dist/` and `*.spec` are gitignored.
 
 ## Endpoint — CONFIRMED (2026-07-22)
 

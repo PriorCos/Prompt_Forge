@@ -11,9 +11,10 @@ adding a parameter is one entry here.
 
 import json
 import re
-from pathlib import Path
 
-PRESETS_PATH = Path(__file__).resolve().parent.parent / 'presets.json'
+from pf.paths import base_dir
+
+PRESETS_PATH = base_dir() / 'presets.json'
 
 # key, label, type, and UI metadata. `omit_when` marks the "off" value that
 # should NOT be sent to the API (so a 0 doesn't clobber a server default).

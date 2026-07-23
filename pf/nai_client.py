@@ -19,12 +19,12 @@ import json
 import threading
 import time
 from dataclasses import dataclass, field
-from pathlib import Path
 from typing import Callable, Optional
 
 import httpx
 
 from pf import debuglog
+from pf.paths import base_dir
 
 BASE = 'https://text.novelai.net'
 CHAT_URL = f'{BASE}/oa/v1/chat/completions'
@@ -37,7 +37,7 @@ MODELS_URL = f'{BASE}/oa/v1/models'
 DEFAULT_STOP = ['<END>']
 
 # Raw JSON of the most recent chat response, for diagnosing bad generations.
-LAST_RESPONSE_PATH = Path(__file__).resolve().parent.parent / 'last_response.json'
+LAST_RESPONSE_PATH = base_dir() / 'last_response.json'
 
 
 class NAIError(Exception):

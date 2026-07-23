@@ -5,9 +5,10 @@ Keep the folder out of anything shared or synced publicly.
 """
 
 import json
-from pathlib import Path
 
-CONFIG_PATH = Path(__file__).resolve().parent.parent / 'config.json'
+from pf.paths import base_dir
+
+CONFIG_PATH = base_dir() / 'config.json'
 
 DEFAULTS = {
     'token': '',

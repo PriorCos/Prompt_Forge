@@ -21,6 +21,11 @@ __pycache__/
 *.egg-info/
 .pytest_cache/
 
+# PyInstaller build artifacts
+build/
+dist/
+*.spec
+
 # OS / editor
 .DS_Store
 Thumbs.db
