@@ -1,0 +1,28 @@
+# Secrets & user data - NEVER commit
+# config.json holds the persistent API token and personal settings
+config.json
+# history.jsonl is your generation history
+history.jsonl
+# last_response.json is the last raw API response (may contain your prompts)
+last_response.json
+# logs/ holds debug logs incl. full request/response payloads
+logs/
+
+# Generated from code defaults on first run (regenerated automatically)
+models.json
+presets.json
+prompts/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

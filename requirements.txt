@@ -1,0 +1,3 @@
+PySide6>=6.7
+httpx>=0.27
+# legacy_nicegui_app.py (the pre-Qt UI) additionally needs: nicegui[native]
